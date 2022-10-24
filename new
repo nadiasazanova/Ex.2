@@ -1,0 +1,38 @@
+
+def letter_frequency(file_path):
+    letters = {}
+    lst = []
+    with open(file_path, "r") as f:
+        for line in f:
+            for letter in line:
+                if letter in letters:
+                    letters[letter] += 1
+                else:
+                    letters[letter] = 1
+
+        for letter in letters:
+            a = str.lower(letter)
+            print(repr(a), ":", letters[letter])
+        freq_decreasing  = sorted(letters, key=lambda x: (letters[x], x),reverse=True)
+        print(freq_decreasing)
+        # The first part with descreasing frequency of letters must be printed as a column
+
+
+
+    sorted_list = sorted(letters.items(), key=lambda x: x[1], reverse=True)
+
+    count_of_letters = sum(list(letters.values()))
+
+
+    test_list = []
+    for key, value in sorted_list:
+
+
+        test_list.append(f"{str.lower(key)} : {round(value / count_of_letters * 100, 2)} %")
+
+
+    new_column="\n".join(test_list)
+    print(new_column)
+
+
+letter_frequency("poem.txt")
